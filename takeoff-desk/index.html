@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Takeoff Desk: offline material takeoff and estimating for contractors</title>
+<meta name="description" content="Material takeoff for twelve trades, a supplier price book with order rounding, labor from published production rates and a printable proposal. One HTML file, no account, no subscription. $29.">
+<link rel="canonical" href="https://nhbstudio.co/takeoff-desk/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;700&family=Newsreader:ital,opsz,wght@0,6..72,400;1,6..72,400&display=swap">
+<link rel="stylesheet" href="/site.css">
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="wordmark" href="/">NHB Studio</a><ul class="topnav"><li><a href="/takeoff-desk/">Takeoff Desk</a></li><li><a href="/takeoff-desk/concrete-calculator.html">Calculators</a></li><li><a class="sale" href="https://nhbstudio.gumroad.com/l/takeoff-desk?utm_source=nhbstudio.co&amp;utm_medium=nav&amp;utm_campaign=takeoff-desk">Buy, $29</a></li></ul></div></header>
+<a class="sr" href="#buy-final">Skip to purchase</a>
+
+<main class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">For contractors, not homeowners</p>
+        <h1>Your takeoff says 5.33 yards.<br><span class="hl">The plant sells 5.5.</span></h1>
+        <p class="lead">Takeoff Desk does material takeoff for twelve trades, prices it from your own supplier price book, and prints a branded proposal. One file. No account, no internet, no subscription.</p>
+
+        <div class="hero-cta">
+          <a class="buy" href="https://nhbstudio.gumroad.com/l/takeoff-desk?utm_source=nhbstudio.co&amp;utm_medium=landing&amp;utm_campaign=takeoff-desk">
+            Get Takeoff Desk
+            <span class="amt" data-gumroad-field="price">$29</span>
+          </a>
+          <p class="buy-note">One payment. Thirty day refund, no questions.</p>
+        </div>
+
+        <ul class="trust">
+          <li><svg class="tick" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Works with no signal</li>
+          <li><svg class="tick" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>No account</li>
+          <li><svg class="tick" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10.5l4 4 8-9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Your data stays on your device</li>
+        </ul>
+      </div>
+
+      <!-- live demo -->
+      <div class="demo" id="demo">
+        <div class="demo-hd">
+          <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>Try it. Concrete slab.</span>
+        </div>
+        <div class="demo-bd">
+          <div class="fields">
+            <div class="field">
+              <label for="d-l">Length (ft)</label>
+              <input id="d-l" type="number" value="20" min="1" step="any">
+            </div>
+            <div class="field">
+              <label for="d-w">Width (ft)</label>
+              <input id="d-w" type="number" value="20" min="1" step="any">
+            </div>
+            <div class="field">
+              <label for="d-d">Thickness (in)</label>
+              <input id="d-d" type="number" value="4" min="1" step="any">
+            </div>
+          </div>
+
+          <div class="result">
+            <p class="cap">Order this</p>
+            <p class="big" id="d-order">5.5 yards</p>
+            <p class="sub" id="d-sub">5.33 yd needed, rounded up to the plant's half-yard increment</p>
+            <div class="rows">
+              <div><span>Area</span><span id="d-area">400 sf</span></div>
+              <div><span>Neat volume</span><span id="d-neat">4.94 yd</span></div>
+              <div><span>With 8% waste</span><span id="d-waste">5.33 yd</span></div>
+              <div><span>Or 80 lb bags</span><span id="d-bags">240</span></div>
+            </div>
+            <p class="alert" id="d-alert" hidden></p>
+          </div>
+        </div>
+        <p class="demo-ft">Every formula is shown in the app, under the result. Nothing hidden.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ THE GAP ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Every free calculator stops at the count</h2>
+      <p>The count was never the hard part. The <a href="concrete-calculator.html">free calculators on this site</a> do that. What no calculator tells you is what to actually order and what it costs you.</p>
+    </div>
+
+    <div class="grid3">
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 7l9-4 9 4-9 4-9-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M3 12l9 4 9-4M3 17l9 4 9-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Supplier order units</h3>
+        <p>Yards, not cubic feet. Bundles, not shingles. Pallets, not square feet. Rounded up to the increment your yard actually sells and raised to their delivery minimum.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v18M5 8h9a3 3 0 010 6H5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Your prices, with a date</h3>
+        <p>Enter your costs once with the order multiple and delivery minimum. Every price carries the day you set it, and goes orange when it is stale, so you never bid off last spring's number.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5M4 19h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M8 15l3.5-4.5L15 14l4-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Labor from production rates</h3>
+        <p>Hours come from quantity divided by a rate you set and adjust as you learn your crew. Not from a feeling on the drive home.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 12a9 9 0 1018 0 9 9 0 00-18 0z" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>The compaction allowance</h3>
+        <p>Gravel loses roughly a fifth of its loose depth when you compact it. Order by finished depth without allowing for that and you find out with the plate already on site.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3h9l4 4v14a1 1 0 01-1 1H6a1 1 0 01-1-1V4a1 1 0 011-1z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M14 3v5h5M9 13h7M9 17h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <h3>A proposal, not a number</h3>
+        <p>Your logo, the scope, the exclusions, an expiry date and a material escalation clause. Print it itemized, grouped, or as a single number depending on the client.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2l8 4v6c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Nothing leaves your device</h3>
+        <p>No server, no account, no analytics, no network call of any kind. Open the file in a text editor and search for "http" if you want to check. You will not find one.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MARKUP VS MARGIN ============ -->
+  <section>
+    <div class="split">
+      <div>
+        <p class="eyebrow">The expensive mistake</p>
+        <h2>A 55% markup is not a 55% margin</h2>
+        <p class="lead" style="margin-top:18px">Markup is a percentage of your cost. Margin is a percentage of the price you charge. Same number in the box, and on a job that costs you $100 they are $67 apart.</p>
+        <p style="margin-top:18px;font-size:16px;color:var(--muted)">Takeoff Desk shows both at once while you price the job, so you find out before you send the proposal rather than when the year closes.</p>
+
+        <div style="margin-top:26px">
+          <label for="mm-rate" style="display:block;font-size:11.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:9px">Drag the rate</label>
+          <input id="mm-rate" type="range" min="10" max="70" value="55" step="5" style="width:100%;max-width:340px;accent-color:var(--brand)">
+        </div>
+      </div>
+
+      <div>
+        <div class="mm">
+          <div class="mm-card on">
+            <p class="k"><span id="mm-r1">55</span>% markup on cost</p>
+            <p class="v" id="mm-markup">$155.00</p>
+            <p class="d">$100 &times; <span id="mm-mult">1.55</span></p>
+          </div>
+          <div class="mm-card">
+            <p class="k"><span id="mm-r2">55</span>% gross margin</p>
+            <p class="v" id="mm-margin">$222.22</p>
+            <p class="d">$100 &divide; <span id="mm-div">0.45</span></p>
+          </div>
+        </div>
+        <p class="gap-note">On a $100 job cost, the difference is <strong id="mm-gap">$67.22</strong>. Use the wrong one all year and it compounds.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICE ============ -->
+  <section>
+    <div class="sec-head">
+      <h2>Estimating software with no monthly fee</h2>
+      <p>Published entry prices as of November 2026. Check each vendor's page before you compare, they move.</p>
+    </div>
+
+    <div class="tablewrap">
+      <table>
+        <caption>Listed because the comparison you are actually making is against a recurring bill, not against another one-time purchase.</caption>
+        <thead>
+          <tr><th scope="col">Product</th><th scope="col" class="num">Entry price</th><th scope="col">Note</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Joist</td><td class="num">$10/mo</td><td>Basics caps you at 5 documents a month. Your logo starts at $17/mo.</td></tr>
+          <tr><td>Jobber</td><td class="num">$29/mo</td><td>Core, one user</td></tr>
+          <tr><td>Contractor Foreman</td><td class="num">$49/mo</td><td>Basic, one user</td></tr>
+          <tr><td>Housecall Pro</td><td class="num">$59/mo</td><td>Basic. Price books are an add-on.</td></tr>
+          <tr><td>Knowify</td><td class="num">$99/mo</td><td>Core, one user</td></tr>
+          <tr class="us"><td>Takeoff Desk</td><td class="num" data-gumroad-field="price">$29</td><td>Once. No account, no renewal, no tier that unlocks the feature you needed.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p style="margin-top:26px;font-size:16.5px;color:var(--muted);max-width:60em">Your real competition is not Jobber. It is the Excel estimator you built yourself to avoid a recurring bill. If that works, keep it. This is for the case where it mostly works but you would like it to know the waste factors and print something you are not embarrassed to hand across a tailgate.</p>
+  </section>
+
+  <!-- ============ WHAT THEY GET ============ -->
+  <section>
+    <div class="split">
+      <div>
+        <p class="eyebrow">What the client sees</p>
+        <h2>It prints this, with your name on it</h2>
+        <p class="lead" style="margin-top:18px">Scope, line items, exclusions, expiry and terms. The exclusions block is the part that saves you the argument in week six.</p>
+        <div style="margin-top:30px">
+          <a class="buy" href="https://nhbstudio.gumroad.com/l/takeoff-desk?utm_source=nhbstudio.co&amp;utm_medium=landing&amp;utm_campaign=takeoff-desk">
+            Get it now <span class="amt" data-gumroad-field="price">$29</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="paper" role="img" aria-label="Example printed proposal showing a contractor letterhead, line items for a garage slab and epoxy floor, exclusions, and a total of six thousand nine hundred and fifty four dollars.">
+        <div class="paper-hd">
+          <div class="co">
+            <span class="logo" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 18L12 5l8 13H4z" fill="currentColor"/><rect x="4" y="19.5" width="16" height="2.4" rx="1" fill="currentColor"/></svg></span>
+            <span>
+              <span class="nm">YOUR COMPANY</span>
+              <span class="sm">CONTRACTING LLC</span>
+            </span>
+          </div>
+          <div class="doc"><b>PROPOSAL</b><span class="sm">Good for 30 days</span></div>
+        </div>
+
+        <table>
+          <thead><tr><th scope="col">Description</th><th scope="col" class="num">Qty</th><th scope="col" class="num">Amount</th></tr></thead>
+          <tbody>
+            <tr><td>Concrete, ready-mix</td><td class="num">8 yd</td><td class="num">$1,360.00</td></tr>
+            <tr><td>Rebar #4, 20ft</td><td class="num">45</td><td class="num">$495.00</td></tr>
+            <tr><td>Concrete place &amp; finish</td><td class="num">16.5 hr</td><td class="num">$1,020.52</td></tr>
+            <tr><td>Epoxy base @ 10 mils</td><td class="num">4 gal</td><td class="num">$312.00</td></tr>
+            <tr><td>Color flake, 40% broadcast</td><td class="num">63 lb</td><td class="num">$315.00</td></tr>
+          </tbody>
+          <tfoot><tr><td>Total</td><td></td><td class="num">$6,954.11</td></tr></tfoot>
+        </table>
+
+        <p class="terms">Not included: permits and permit fees, concealed damage found after demolition, disposal beyond one load, anything not written above. If a supplier raises a price more than 5% before work starts, that line is re-quoted before we order.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section>
+    <div class="sec-head"><h2>Straight answers</h2></div>
+    <div class="faq">
+      <details>
+        <summary>Is this a subscription?</summary>
+        <p class="ans">No. One payment, one file, yours. There is no account to keep, nothing to renew, and no tier that unlocks the feature you actually needed.</p>
+      </details>
+      <details>
+        <summary>Does it work without internet?</summary>
+        <p class="ans">Yes, that is the point. It is a single HTML file on your own device. Once it is downloaded there is no server involved, so it runs in a basement, a crawlspace, or a lot with no signal.</p>
+      </details>
+      <details>
+        <summary>What happens to my price book if I stop paying?</summary>
+        <p class="ans">Nothing, because there is nothing to stop paying. You bought the file. It stays on your device and keeps working.</p>
+      </details>
+      <details>
+        <summary>Which trades does it cover?</summary>
+        <p class="ans">Twelve. Concrete, drywall, paint, epoxy, gravel, mulch, sod, pavers, tile, insulation, roofing and fence. Each with its own waste factor, its own order units and the formula printed under the result.</p>
+      </details>
+      <details>
+        <summary>Is it a replacement for Jobber or ServiceTitan?</summary>
+        <p class="ans">No. Those are field service platforms with scheduling, dispatch, payments and a CRM. This does takeoff, estimating and the proposal document, and nothing else. If you need dispatch, buy dispatch.</p>
+      </details>
+      <details>
+        <summary>What if a formula is wrong?</summary>
+        <p class="ans">Tell me which material, what you entered and what you expected, and I will fix it and send you the updated file. A wrong constant is worth more to me than a polite review. Thirty day refund either way, no questions.</p>
+      </details>
+      <details>
+        <summary>What do I actually download?</summary>
+        <p class="ans">A zip with three files. The app itself as one HTML file, a plain README that walks you through setup in about ten minutes, and a changelog. No installer, no dependencies.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ FINAL ============ -->
+  <section style="padding-top:20px">
+    <div class="final" id="buy-final">
+      <h2>Stop bidding off a price from last spring</h2>
+      <p>Twelve trades, your own price book, labor from real production rates, and a proposal with your logo on it. One file that works with no signal and never sends you an invoice.</p>
+      <a class="buy" href="https://nhbstudio.gumroad.com/l/takeoff-desk?utm_source=nhbstudio.co&amp;utm_medium=landing&amp;utm_campaign=takeoff-desk">
+        Get Takeoff Desk
+        <span class="amt" data-gumroad-field="price">$29</span>
+      </a>
+      <p class="rating">Sold through Gumroad. Thirty day refund, no questions.</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>Takeoff Desk is an estimating tool. Confirm quantities against your supplier's coverage figures and your local code before ordering. Nothing here is engineering advice.</p>
+    <p>NHB Studio &middot; Questions, corrections and refund requests: <a href="mailto:nhbstudioco@gmail.com">nhbstudioco@gmail.com</a></p>
+    <p>Free calculators, same formulas: <a href="concrete-calculator.html">concrete</a>, <a href="drywall-calculator.html">drywall</a>, <a href="paint-calculator.html">paint</a>, <a href="epoxy-calculator.html">epoxy</a>, <a href="gravel-calculator.html">gravel</a>, <a href="mulch-calculator.html">mulch</a>, <a href="sod-calculator.html">sod</a>, <a href="pavers-calculator.html">pavers</a>, <a href="tile-calculator.html">tile</a>, <a href="insulation-calculator.html">insulation</a>, <a href="roofing-calculator.html">roofing</a>, <a href="fence-calculator.html">fence</a></p>
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  "use strict";
+  var $ = function (id) { return document.getElementById(id); };
+  var up = function (n) { return Math.ceil(n - 1e-9); };
+  var rd = function (n, d) { var p = Math.pow(10, d === undefined ? 2 : d); return Math.round(n * p) / p; };
+  var usd = function (n) {
+    return "$" + n.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+
+  /* ---- live takeoff demo ---- */
+  var L = $("d-l"), W = $("d-w"), D = $("d-d");
+  function takeoff() {
+    if (!L || !W || !D) return;
+    var l = parseFloat(L.value) || 0, w = parseFloat(W.value) || 0, d = parseFloat(D.value) || 0;
+    var area = l * w;
+    var cuft = area * (d / 12);
+    var neat = cuft / 27;
+    var waste = neat * 1.08;
+    var order = Math.ceil(waste / 0.5 - 1e-9) * 0.5;      // half-yard increments
+    if (order < 1 && order > 0) order = 1;                 // one yard minimum
+
+    $("d-order").textContent = rd(order, 2) + (order === 1 ? " yard" : " yards");
+    $("d-sub").textContent = rd(waste, 2) + " yd needed, rounded up to the plant's half-yard increment";
+    $("d-area").textContent = rd(area, 0).toLocaleString("en-US") + " sf";
+    $("d-neat").textContent = rd(neat, 2) + " yd";
+    $("d-waste").textContent = rd(waste, 2) + " yd";
+    $("d-bags").textContent = up(cuft * 1.08 / 0.6).toLocaleString("en-US");
+
+    var alert = $("d-alert");
+    if (order > 0 && order < 7) {
+      alert.textContent = "Under the 7 yard short-load threshold. Most plants add a fee below that, so "
+        + rd(order, 2) + " yd and 7 yd often land within a few dollars of each other. Call the plant before you order the smaller load.";
+      alert.hidden = false;
+    } else {
+      alert.hidden = true;
+    }
+  }
+  [L, W, D].forEach(function (el) { if (el) el.addEventListener("input", takeoff); });
+  takeoff();
+
+  /* ---- markup vs margin ---- */
+  var R = $("mm-rate");
+  function mm() {
+    if (!R) return;
+    var r = parseFloat(R.value) || 0, f = r / 100;
+    var markup = 100 * (1 + f);
+    var margin = f >= 1 ? 0 : 100 / (1 - f);
+    $("mm-r1").textContent = r;
+    $("mm-r2").textContent = r;
+    $("mm-markup").textContent = usd(markup);
+    $("mm-margin").textContent = f >= 1 ? "no finite price" : usd(margin);
+    $("mm-mult").textContent = rd(1 + f, 3);
+    $("mm-div").textContent = rd(1 - f, 3);
+    $("mm-gap").textContent = f >= 1 ? "unbounded" : usd(margin - markup);
+  }
+  if (R) { R.addEventListener("input", mm); mm(); }
+
+  /* ---- reveal on scroll ---- */
+  var targets = document.querySelectorAll("section > .sec-head, .card, .paper, .tablewrap, .mm, .final");
+  if ("IntersectionObserver" in window && targets.length) {
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add("reveal"); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px", threshold: 0.06 });
+    Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+    // Failsafe: if the observer never fires for any reason, nothing stays invisible.
+    setTimeout(function () {
+      Array.prototype.forEach.call(targets, function (el) { el.classList.add("in"); });
+    }, 2500);
+  }
+})();
+</script>
+</body>
+</html>
