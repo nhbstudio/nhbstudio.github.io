@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Greenhouse, Lever and Ashby board finder</title>
+<meta name="description" content="Type a company name or careers URL and find out whether its jobs board runs on Greenhouse, Lever or Ashby, and how many roles are open. Runs in your browser.">
+<link rel="canonical" href="https://nhbstudio.co/ats-lookup/">
+<link rel="stylesheet" href="/site.css">
+<style>.f{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.f input{flex:1;min-width:240px;padding:12px;font:inherit;border:1px solid var(--rule);background:var(--white)}.f button{padding:12px 20px;font:inherit;background:var(--green);color:#fff;border:0;cursor:pointer}#out li{margin:8px 0}.cta{display:inline-block;margin-top:24px;padding:12px 20px;background:var(--green);color:#fff;text-decoration:none}</style>
+</head>
+<body>
+<header class="topbar"><div class="wrap"><a class="wordmark" href="/">NHB Studio</a></div></header>
+<main class="wrap">
+<h1>Which jobs board does a company use?</h1>
+<p class="lead">Type a company name, a careers URL or a board slug. This page asks Greenhouse, Lever and Ashby directly from your browser and shows where the company's open roles live. Nothing is sent to us.</p>
+<form class="f" id="f"><input id="q" placeholder="airbnb, or https://jobs.lever.co/spotify" autocomplete="off" aria-label="Company name or careers URL"><button type="submit">Find the board</button></form>
+<ul id="out" aria-live="polite"></ul>
+<p>Need every role from many companies in one table, one row per requisition with all locations and the days since first posted?</p>
+<a class="cta" href="https://apify.com/nhbstudio/greenhouse-lever-ashby-jobs?utm_source=nhbstudio.co&amp;utm_medium=ats-lookup&amp;utm_campaign=job-board-scraper-actor">Greenhouse, Lever &amp; Ashby Jobs on Apify, from $2 per 1,000 rows</a>
+</main>
+<script>
+(function(){
+var out=document.getElementById('out');
+function slugs(t){
+  t=t.trim();if(!t)return[];
+  var m=t.match(/(?:boards(?:-api)?\.greenhouse\.io\/(?:v1\/boards\/)?|job-boards\.greenhouse\.io\/|jobs\.lever\.co\/|api\.lever\.co\/v0\/postings\/|jobs\.ashbyhq\.com\/)([\w%.-]+)/i);
+  var s=m?m[1]:t.toLowerCase().replace(/[^a-z0-9-]/g,'');
+  var h=s.length&&s!==t.toLowerCase()?[s]:[s];
+  if(!m&&/\s/.test(t)){h.push(t.toLowerCase().replace(/[^a-z0-9]/g,''));h.push(t.toLowerCase().replace(/\s+/g,'-').replace(/[^a-z0-9-]/g,''))}
+  return h.filter(function(x,i){return x&&h.indexOf(x)===i});
+}
+var probes=[
+ ['Greenhouse',function(s){return 'https://boards-api.greenhouse.io/v1/boards/'+s+'/jobs'},function(d){return d.jobs.length},function(s){return 'https://boards.greenhouse.io/'+s}],
+ ['Lever',function(s){return 'https://api.lever.co/v0/postings/'+s+'?mode=json'},function(d){return d.length},function(s){return 'https://jobs.lever.co/'+s}],
+ ['Ashby',function(s){return 'https://api.ashbyhq.com/posting-api/job-board/'+s},function(d){return d.jobs.length},function(s){return 'https://jobs.ashbyhq.com/'+s}]
+];
+document.getElementById('f').addEventListener('submit',function(e){
+  e.preventDefault();out.innerHTML='';
+  var list=slugs(document.getElementById('q').value),found=0,pending=0;
+  if(!list.length)return;
+  list.forEach(function(s){probes.forEach(function(p){
+    pending++;
+    fetch(p[1](s)).then(function(r){return r.ok?r.json():null}).then(function(d){
+      if(d){var n=p[2](d);if(n>0){found++;var li=document.createElement('li');
+        li.appendChild(document.createTextNode(p[0]+': '));var a=document.createElement('a');a.href=p[3](s);a.textContent=p[3](s);li.appendChild(a);
+        li.appendChild(document.createTextNode(' ('+n+' open roles, slug '+s+')'));out.appendChild(li)}}
+    }).catch(function(){}).then(function(){
+      if(--pending===0&&!found){var li=document.createElement('li');li.textContent='No Greenhouse, Lever or Ashby board answered for that name. Try the slug from the company\'s careers URL.';out.appendChild(li)}
+    });
+  })});
+});
+})();
+</script>
+</body>
+</html>
